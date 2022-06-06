@@ -6,13 +6,7 @@ export default function Table({title,headings,datas2,searchtItem2,setSearchtItem
     return <th key={i}>{head}</th>
 })
 
-   const body=datas2.filter((val)=>{
-       if(searchtItem2===""){
-           return val
-       }else if(val.name.toLowerCase().includes(searchtItem2.toLowerCase())){
-           return val
-       }
-    }).map((val,i)=>{
+   const body=datas2.map((val,i)=>{
        const {name,stack,state,country,company,experience}=val;
        return (
            <tr key={i}>
@@ -42,7 +36,6 @@ export default function Table({title,headings,datas2,searchtItem2,setSearchtItem
            <option value='state'>State</option>
            <option value='country'>Country</option>
            <option value='company'>Company</option>
-           <option value='experience'>Years of experience</option>
        </select>
         </div>
 </div>

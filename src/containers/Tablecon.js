@@ -23,9 +23,13 @@ export default function Tablecon(){
 
     
     function fetchinfo2(){
+//        axios.get(`https://client.stephcom.com.ng/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
+
         axios.get(`http://localhost:80/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
         .then(res=>{
             setDatas2(res.data.data);
+            console.log(res.data.data)
+
         }).catch(err=>{
        console.log(err)
         })
