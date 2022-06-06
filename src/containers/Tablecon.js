@@ -7,7 +7,7 @@ import "../styles/table.scss"
 export default function Tablecon(){
     const [datas,setDatas]=useState([])
     const [order,setOrder]=useState(["name"]);
-    const [order2,setOrder2]=useState("");
+    const [order2,setOrder2]=useState("name");
     const [searchtItem,setSearchtItem]=useState("");
     const [datas2,setDatas2]=useState([])
     const [searchtItem2,setSearchtItem2]=useState("")
@@ -39,7 +39,7 @@ export default function Tablecon(){
     
     useEffect(()=>{
         fetchinfo2();
-    },[searchtItem2]);
+    },[searchtItem2,order2]);
 
     return (
         <>
