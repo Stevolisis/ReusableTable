@@ -1,8 +1,9 @@
-import {React,useState,useEffect} from 'react';
-import Table from './Table';
+import  {React,useState,useEffect,lazy,Suspense} from 'react';
+//import Table from './Table';
 import Table2 from './Table2';
 import axios from 'axios'
 import "../styles/table.scss"
+const Table=lazy(()=>import('./Table'));
 
 export default function Tablecon(){
     const [datas,setDatas]=useState([])
@@ -13,7 +14,8 @@ export default function Tablecon(){
     const [searchtItem2,setSearchtItem2]=useState("")
 
     function fetchinfo(){
-        axios.get('https://client.stephcom.com.ng/fetchinfo')
+      //  axios.get('https://client.stephcom.com.ng/fetchinfo',{headers:{"Access-Control-Allow-Origin":"*"}})
+        axios.get('http://localhost:80/fetchinfo',{headers:{"Access-Control-Allow-Origin":"*"}})
         .then(res=>{
             setDatas(res.data.data);
         }).catch(err=>{
@@ -23,9 +25,9 @@ export default function Tablecon(){
 
     
     function fetchinfo2(){
-       axios.get(`https://client.stephcom.com.ng/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
+    //   axios.get(`https://client.stephcom.com.ng/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
 
-      //  axios.get(`http://localhost:80/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
+      axios.get(`http://localhost:80/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
         .then(res=>{
             setDatas2(res.data.data);
             console.log(res.data.data)
@@ -47,7 +49,7 @@ export default function Tablecon(){
 
     return (
         <>
-
+<Suspense fallback={<div><h1>...Loading</h1></div>}>
         <Table 
         title='Employees Info'
         headings={["id","Name","Stack","State","Country","Company","Years of Experience"]}
@@ -57,6 +59,7 @@ export default function Tablecon(){
         setSearchtItem={setSearchtItem}
         searchtItem={searchtItem}
         />
+</Suspense>
 
 <Table2 
         title='Employees Info Searched from Backend'
