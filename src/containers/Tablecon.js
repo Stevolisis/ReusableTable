@@ -17,8 +17,8 @@ export default function Tablecon(){
     const [searchtItem2,setSearchtItem2]=useState("")
 
     function fetchinfo(){
-      //  axios.get('https://client.stephcom.com.ng/fetchinfo',{headers:{"Access-Control-Allow-Origin":"*"}})
-        axios.get('http://localhost:80/fetchinfo',{headers:{"Access-Control-Allow-Origin":"*"}})
+        axios.get('https://client.stephcom.com.ng/fetchinfo',{headers:{"Access-Control-Allow-Origin":"*"}})
+       // axios.get('http://localhost:80/fetchinfo',{headers:{"Access-Control-Allow-Origin":"*"}})
         .then(res=>{
             setDatas(res.data.data);
         }).catch(err=>{
@@ -28,9 +28,9 @@ export default function Tablecon(){
 
     
     function fetchinfo2(){
-    //   axios.get(`https://client.stephcom.com.ng/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
+       axios.get(`https://client.stephcom.com.ng/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
 
-      axios.get(`http://localhost:80/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
+    //  axios.get(`http://localhost:80/fetchinfo2?filter=${searchtItem2}&order=${order2}`)
         .then(res=>{
             setDatas2(res.data.data);
             console.log(res.data.data)
