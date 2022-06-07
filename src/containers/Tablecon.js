@@ -1,9 +1,12 @@
 import  {React,useState,useEffect,lazy,Suspense} from 'react';
-//import Table from './Table';
+import {Link} from 'react-router-dom';
+import {ErrorBoundary} from 'react-error-boundary'
 import Table2 from './Table2';
 import axios from 'axios'
 import "../styles/table.scss"
+import ErrorFallback from './ErrorBoundary';
 const Table=lazy(()=>import('./Table'));
+
 
 export default function Tablecon(){
     const [datas,setDatas]=useState([])
@@ -49,7 +52,11 @@ export default function Tablecon(){
 
     return (
         <>
-<Suspense fallback={<div><h1>...Loading</h1></div>}>
+        <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={()=>{}}
+        >
+<Suspense fallback={<div>...Loading</div>}>
         <Table 
         title='Employees Info'
         headings={["id","Name","Stack","State","Country","Company","Years of Experience"]}
@@ -60,6 +67,7 @@ export default function Tablecon(){
         searchtItem={searchtItem}
         />
 </Suspense>
+</ErrorBoundary>
 
 <Table2 
         title='Employees Info Searched from Backend'
@@ -70,7 +78,7 @@ export default function Tablecon(){
         setSearchtItem2={setSearchtItem2}
         searchtItem2={searchtItem2}
         />
-
+     <Link to='/images' style={{TextDecoderStream:'none'}}>Images</Link>
       
 
         </>

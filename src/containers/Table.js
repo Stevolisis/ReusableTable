@@ -2,6 +2,7 @@ import {React} from 'react'
 
 export default function Table({title,headings,datas,searchtItem,setSearchtItem,order,setOrder}){
 
+
    const heads=headings.map((head,i)=>{
     return <th key={i}>{head}</th>
 })
@@ -36,7 +37,7 @@ export default function Table({title,headings,datas,searchtItem,setSearchtItem,o
     <div className='filter'>
         <input type='text' placeholder='Search Employees'
         onChange={(e)=>setSearchtItem(e.target.value)}/>
-                       <select onChange={(e)=>setOrder([e.target.value])}>
+        <select onChange={(e)=>setOrder([e.target.value])}>
            <option value='name' >Name</option>
            <option value='stack'>Stack</option>
            <option value='state'>State</option>
