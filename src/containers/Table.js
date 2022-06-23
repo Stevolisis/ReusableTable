@@ -7,8 +7,7 @@ export default function Table({title,headings,datas,searchtItem,setSearchtItem,o
     return <th key={i}>{head}</th>
 })
 
-   const body=datas.filter((data)=>{
-       //const columns=["name"]
+   const body=datas.filter(data=>{
        if(searchtItem===""){
            return data
        }else if(order.some((column)=>data[column].toString().toLowerCase().includes(searchtItem.toLowerCase()))){
@@ -28,10 +27,12 @@ export default function Table({title,headings,datas,searchtItem,setSearchtItem,o
            </tr>
        )
    })
+
+
     return(
         <>
     <div className='tableholder'>
-    <div className='header'><h2>{title}</h2></div>
+    <div className='header'><h2 data-testid='title'>{title}</h2></div>
 
     <div className='filters'>
     <div className='filter'>
@@ -47,6 +48,7 @@ export default function Table({title,headings,datas,searchtItem,setSearchtItem,o
        </select>
         </div>
 </div>
+
 <div className='main'>
     
 <div className='scroll'>

@@ -1,6 +1,7 @@
 import {React,lazy,Suspense} from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Loader from './containers/Loader';
+import Testingwthreact from './containers/Testingwthreact';
 //import Tablecon from './containers/Tablecon'
 import './styles/table.scss';
 const Tablecon=lazy(()=>import('./containers/Tablecon'));
@@ -19,6 +20,7 @@ function App() {
       <Routes>  
       <Route path='/' element={<Tablecon />} />
       <Route path='/images' element={<Lazyloadimages />} />
+      <Route path='/test' element={<Testingwthreact />} />
       <Route path="*" element={<p>There's nothing here: 404!</p>} />
       </Routes>
       </Suspense>

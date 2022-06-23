@@ -7,8 +7,9 @@ export default function Lazyloadimages(){
     const [images,setImages]=useState([])
 
     function fetchimages(){
-          axios.get('https://client.stephcom.com.ng/fetchimages',{withCredentials:true})
-          .then(res=>{
+    //    axios.get('https://client.stephcom.com.ng/fetchimages',{withCredentials:true})
+          axios.get('http://localhost:80/fetchimages',{withCredentials:true})
+        .then(res=>{
               setImages(res.data.data);
           }).catch(err=>{
          console.log(err)

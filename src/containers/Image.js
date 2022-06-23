@@ -7,7 +7,7 @@ export default function Image({images}){
   const body=images.map((image)=>{
       const {imagelink,description}=image;
       return  (
-      <div className='image' key={imagelink.split('../media')[1]}>
+      <div className='image' key={description}>
           <LazyLoadImage
           height='50vh'
           width='50vw'
